@@ -20,7 +20,7 @@ class Extension extends \Bolt\BaseExtension
             'link' => "http://bolt.cm",
             'version' => "0.1",
             'required_bolt_version' => "1.3",
-            'highest_bolt_version' => "1.3",
+            'highest_bolt_version' => "2.0",
             'type' => "SEO",
             'first_releasedate' => "2013-11-12",
             'latest_releasedate' => "2013-11-14",
@@ -54,7 +54,7 @@ class Extension extends \Bolt\BaseExtension
     {
 
         $record = $this->getRecord();
-        $metas  = $this->setMetasFromRecord($record);
+        $this->setMetasFromRecord($record);
 
     }
 
@@ -134,7 +134,7 @@ class Extension extends \Bolt\BaseExtension
                 if (!empty($value)) {
                     $metatag = $this->meta($name, $value);
                     if ($metatag) {
-                        $this->insertSnippet(SnippetLocation::AFTER_META, $metatag);
+                        $this->addSnippet(SnippetLocation::AFTER_META, $metatag);
                     }
                 }
             }
@@ -146,7 +146,7 @@ class Extension extends \Bolt\BaseExtension
     function metatitle($separator = '', $sitename = '')
     {
         $record = $this->getRecord();
-        $metas  = $this->setMetasFromRecord($record);
+        $this->setMetasFromRecord($record);
 
         if (!empty($separator) && !empty($sitename)) {
             $separator = " $separator ";
